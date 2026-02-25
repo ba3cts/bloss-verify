@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function BlossVerificationPage() {
   const [serial, setSerial] = useState("");
@@ -41,3 +41,17 @@ export default function BlossVerificationPage() {
 
   setStatus("valid");
 };
+useEffect(() => {
+  if (typeof window === "undefined") return;
+
+  const params = new URLSearchParams(window.location.search);
+  const codeFromUrl = params.get("code");
+
+  if (codeFromUrl) {
+    setSerial(codeFromUrl);
+
+    setTimeout(() => {
+      handleVerify();
+    }, 300);
+  }
+}, []);
