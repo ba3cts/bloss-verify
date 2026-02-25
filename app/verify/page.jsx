@@ -1,9 +1,9 @@
-import { supabase } from "@/lib/supabase";
 "use client";
-
+import { supabase } from "@/lib/supabase";
+import { useEffect, useState } from "react";
 export const dynamic = "force-dynamic";
 
-import { useEffect, useState } from "react";
+
 
 export default function BlossVerificationPage() {
   const [serial, setSerial] = useState("");
@@ -47,11 +47,29 @@ useEffect(() => {
   const params = new URLSearchParams(window.location.search);
   const codeFromUrl = params.get("code");
 
-  if (codeFromUrl) {
-    setSerial(codeFromUrl);
+  if (!codeFromUrl) return;
 
-    setTimeout(() => {
-      handleVerify();
-    }, 300);
-  }
+  (async () => {
+    const cleanCode = codeFromUrl.trim().toUpperCase();
+
+    const { data, error } = await supabase
+      .from("serials")
+      .select("*")
+      .eq("code", cleanCode)
+      .single();
+
+    if (error || !data || !data.is_valid) {
+      setSerial(codeFromUrl);
+      setStatus("invalid");
+      return;
+    }
+
+    await supabase
+      .from("serials")
+      .update({ scans: (data.scans || 0) + 1 })
+      .eq("id", data.id);
+
+    setSerial(codeFromUrl);
+    setStatus("valid");
+  })();
 }, []);
