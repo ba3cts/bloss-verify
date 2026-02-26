@@ -9,6 +9,7 @@ export default function BlossVerificationPage() {
   const [serial, setSerial] = useState("");
   const [status, setStatus] = useState(null);
 
+  // 🔎 Manual verify
   const handleVerify = async () => {
     if (!serial) return;
 
@@ -33,6 +34,7 @@ export default function BlossVerificationPage() {
     setStatus("valid");
   };
 
+  // 🔗 Auto verify από URL (?code=...)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -80,8 +82,12 @@ export default function BlossVerificationPage() {
         Έλεγχος
       </button>
 
-      {status === "valid" && <p style={{ color: "green" }}>Valid</p>}
-      {status === "invalid" && <p style={{ color: "red" }}>Invalid</p>}
+      {status === "valid" && (
+        <p style={{ color: "green" }}>Valid</p>
+      )}
+      {status === "invalid" && (
+        <p style={{ color: "red" }}>Invalid</p>
+      )}
     </div>
   );
 }
