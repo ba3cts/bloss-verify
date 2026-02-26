@@ -25,7 +25,7 @@ export default function BlossVerificationPage() {
   const { data, error } = await supabase
     .from("serials")
     .select("*")
-    .eq("code", serial.trim().toUpperCase())
+    .eq("code", serial.trim())
     .single();
 
   if (error || !data || !data.is_valid) {
