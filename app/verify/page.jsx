@@ -12,12 +12,12 @@ export default function BlossVerificationPage() {
   const handleVerify = async () => {
     if (!serial) return;
 
-    const cleanSerial = serial.trim().toUpperCase();
+    const cleanCode = serial.trim().toUpperCase();
 
     const { data, error } = await supabase
       .from("serials")
       .select("*")
-      .eq("code", cleanSerial)
+      .eq("code", cleanCode)
       .single();
 
     if (error || !data || !data.is_valid) {
