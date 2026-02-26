@@ -69,7 +69,6 @@ useEffect(() => {
       .update({ scans: (data.scans || 0) + 1 })
       .eq("id", data.id);
 
-    setSerial(codeFromUrl);
-    setStatus("valid");
-  })();
+setStatus("valid");
+})();
 }, []);
