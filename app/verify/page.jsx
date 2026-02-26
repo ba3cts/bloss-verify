@@ -12,12 +12,12 @@ export default function BlossVerificationPage() {
   const handleVerify = async () => {
     if (!serial) return;
 
-    const cleanCode = serial.trim().toUpperCase();
+    const clean = serial.trim().toUpperCase();
 
     const { data, error } = await supabase
       .from("serials")
       .select("*")
-      .eq("code", cleanCode)
+      .eq("code", clean)
       .single();
 
     if (error || !data || !data.is_valid) {
@@ -25,7 +25,6 @@ export default function BlossVerificationPage() {
       return;
     }
 
-    // αύξηση scan counter
     await supabase
       .from("serials")
       .update({ scans: (data.scans || 0) + 1 })
@@ -39,7 +38,6 @@ export default function BlossVerificationPage() {
 
     const params = new URLSearchParams(window.location.search);
     const codeFromUrl = params.get("code");
-
     if (!codeFromUrl) return;
 
     (async () => {
@@ -62,7 +60,7 @@ export default function BlossVerificationPage() {
         .update({ scans: (data.scans || 0) + 1 })
         .eq("id", data.id);
 
-      setSerial(cleanCode);
+      setSerial(codeFromUrl);
       setStatus("valid");
     })();
   }, []);
