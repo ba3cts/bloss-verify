@@ -21,6 +21,10 @@ export default function BlossVerificationPage() {
       .eq("code", clean)
       .single();
 
+    console.log("MANUAL DATA:", data);
+    console.log("MANUAL ERROR:", error);
+
+
     if (error || !data || !data.is_valid) {
       setStatus("invalid");
       return;
@@ -50,6 +54,9 @@ export default function BlossVerificationPage() {
         .select("*")
         .eq("code", cleanCode)
         .single();
+
+      console.log("AUTO DATA:", data);
+      console.log("AUTO ERROR:", error);
 
       if (error || !data || !data.is_valid) {
         setSerial(codeFromUrl);
