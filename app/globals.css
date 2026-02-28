@@ -1,10 +1,8 @@
 /* ===== BLOSS LUXURY UI ===== */
 
-body { background: red !important; }
-
 .bloss-wrapper {
   min-height: 100vh;
-  background: #f7f5f2;
+  background: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
