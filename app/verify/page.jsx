@@ -75,26 +75,33 @@ export default function BlossVerificationPage() {
   }, []);
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>BLOSS Verification</h1>
+  <div className="bloss-wrapper">
+    <div className="bloss-card">
+      <h1 className="bloss-title">BLOSS Verification</h1>
+
+      <p className="bloss-subtitle">
+        Enter your product code to verify authenticity
+      </p>
 
       <input
         value={serial}
         onChange={(e) => setSerial(e.target.value)}
-        placeholder="Enter serial"
-        style={{ padding: 10, marginRight: 10 }}
+        placeholder="Enter serial code"
+        className="bloss-input"
       />
 
-      <button onClick={handleVerify} style={{ padding: 10 }}>
-        Έλεγχος
+      <button onClick={handleVerify} className="bloss-button">
+        Verify Product
       </button>
 
       {status === "valid" && (
-        <p style={{ color: "green" }}>Valid</p>
+        <p className="bloss-valid">✓ Authentic Product</p>
       )}
+
       {status === "invalid" && (
-        <p style={{ color: "red" }}>Invalid</p>
+        <p className="bloss-invalid">✕ Invalid Code</p>
       )}
     </div>
-  );
+  </div>
+);
 }

@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+import "./globals.css";
 
 export const metadata = {
   title: "BLOSS Verification",
