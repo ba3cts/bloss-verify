@@ -1,0 +1,82 @@
+/* ===== BLOSS LUXURY UI ===== */
+
+body { background: red !important; }
+
+.bloss-wrapper {
+  min-height: 100vh;
+  background: #f7f5f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.bloss-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 48px;
+  border-radius: 24px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.bloss-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.bloss-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+.bloss-input {
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  padding: 0 16px;
+  font-size: 15px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.bloss-input:focus {
+  outline: none;
+  border-color: #c8a96a;
+  box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.15);
+}
+
+.bloss-button {
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  background: #111;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bloss-button:hover {
+  background: #c8a96a;
+}
+
+.bloss-valid {
+  margin-top: 18px;
+  color: #1a7f37;
+  font-weight: 500;
+}
+
+.bloss-invalid {
+  margin-top: 18px;
+  color: #d92d20;
+  font-weight: 500;
+}
